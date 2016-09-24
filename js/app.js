@@ -2,13 +2,22 @@
 
 console.log("App Running");
 
+// Leaflet map reference
+var mymap;
+
+// Reference to active layers
+var layers = [];
+
+// When form (checkboxes) are updated
 function update(form){
   var values = {};
 
+  // Read values from form
   $.each(form.serializeArray(), function(i, field) {
       values[field.name] = field.value;
   });
 
+  // Check which channels we have
   var i = {
     B : values['B'] || "X",
     W : values['W'] || "X",
@@ -16,37 +25,46 @@ function update(form){
     R : values['R'] || "X",
   };
 
+  // Build filename
   var url = i.B + i.W + i.G + i.R;
   var filename = '/images/05_' + url + '.gif';
 
-  // $('img#main').attr('src', filename);
-  addImage(filename)
+  // Add image to the map
+  addImage(filename);
 }
-
 
 function addImage(filename){
-  console.log(filename);
 
+  // Remove previous layers
+  $.each(layers, function(i, layer){
+    mymap.removeLayer(layer);
+  })
 
+  // Clear layers
+  layers = [];
+
+  // Console feedback
+  console.log("Adding '" + filename + "'' to the document.");
+
+  var imageBounds = [[0, 0], [1, 1]];
+  var layer = L.imageOverlay(filename, imageBounds).addTo(mymap);
+
+  layers.push(layer);
 }
 
+// Document ready
 $(function(){
 
+  // Set height of map
   $('#map').css('height', $(document).height());
 
-  var mymap = L.map('map').setView([0.5, 0.5], 9);
+  // Initialize new leaflet map
+  mymap = L.map('map').setView([0.5, 0.5], 9);
 
-  L.marker([0, 0]).addTo(mymap).bindPopup("[0,0]").openPopup();
-  L.marker([1, 1]).addTo(mymap).bindPopup("[1,1]").openPopup();
-
-  var imageUrl = 'http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg';
-  var imageBounds = [[0, 0], [1, 1]];
-
-  L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
-
+  // Watch for changes on form.
   $( "#form" ).change(function() {
     update($('#form'));
   });
 
-
+  addImage("/images/05_XXXX.gif");
 })
