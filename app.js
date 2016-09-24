@@ -27,7 +27,7 @@ function update(form){
 
   // Build filename
   var url = i.B + i.W + i.G + i.R;
-  var filename = '/images/05_' + url + '.gif';
+  var filename = 'images/05_' + url + '.gif';
 
   // Add image to the map
   addImage(filename);
@@ -66,5 +66,5 @@ $(function(){
     update($('#form'));
   });
 
-  addImage("/images/05_XXXX.gif");
+  addImage("images/05_XXXX.gif");
 })
