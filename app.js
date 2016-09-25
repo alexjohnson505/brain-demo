@@ -64,10 +64,16 @@ $(function(){
   var options = {
     minZoom: 10,
     maxZoom: 13,
+    zoomControl: false,
   };
 
   // Initialize new leaflet map
   map = L.map('map', options).setView([0.5, 0.5], 10);
+
+  //add zoom control with your options
+  L.control.zoom({
+      position:'topright'
+  }).addTo(map);
 
   // Watch for changes on form.
   $( "#form" ).change(function() {

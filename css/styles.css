@@ -14,7 +14,7 @@ body {
   width: 114px;
   position: absolute;
   left: 0;
-  top: 70px;
+  top: 20px;
   z-index: 150;
 }
 
@@ -28,20 +28,60 @@ body {
   text-shadow: 1px 1px 2px #000;
 }
 
-.image-picker {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  border-top: 2px solid #999;
-  height: 170px;
-  padding-bottom: 15px;
-  overflow: scroll;
+.menu button.btn {
+  color: #fff;
+  background-color: rgba(0,0,0,0);
+  border: 2px solid #fff;
+  margin-top: 20px;
 }
 
-.image-picker .image-preview {
-  width: 150px;
+.menu button.btn:focus {
+  outline: none;
+  
+}
+
+.menu button.btn:hover {
+  background-color: rgba(255,255,255,.2);
+}
+
+// .image-picker {
+//   position: absolute;
+//   width: 100%;
+//   bottom: 0;
+//   border-top: 2px solid #999;
+//   height: 170px;
+//   padding-bottom: 15px;
+//   overflow: scroll;
+// }
+
+// .image-picker .image-preview {
+//   width: 150px;
+//   height: 150px;
+//   float: left;
+//   border: 2px solid #999;
+//   margin: 15px 15px 0;
+// }
+
+
+.modal .modal-content {
+  background-color: #000;
+  border-radius: 0;
+  border: 1px solid #999;
+  color: #fff;
+}
+
+
+.modal .modal-header {
+  }
+
+.modal button.close span {
+  color: #fff;
+}
+
+.modal .modal-body .preview {
   height: 150px;
-  float: left;
+  width: 150px;
   border: 2px solid #999;
-  margin: 15px 15px 0;
+  margin: 0 0 15px;
+
 }
