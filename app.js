@@ -55,6 +55,11 @@ function addImage(filename){
   layers.push(layer);
 }
 
+function changeBrain(id){
+  // find image set
+  // pre-load
+}
+
 // Document ready
 $(function(){
 
@@ -81,4 +86,50 @@ $(function(){
   });
 
   addImage("images/05_XXXX.gif");
+
+  // Parse local CSV file
+  Papa.parse('data/images.csv', {
+    download: true,
+    complete: function(results) {
+
+      // Parsing error
+      if (results.errors && results.errors.length > 0) {
+        alert("Error loading data. Check Javascript console for more details");
+        console.error(results.errors);
+        return;
+      }
+
+      results = results.data;
+
+      var keys = results[0];
+
+      var values = results.splice(1, results.length);
+
+      var acc = [];
+
+      $.each(values, function(index, row){
+        
+        var obj = {};
+
+        $.each(keys, function(i, value){
+          obj[value] = row[i];
+        });
+
+        acc.push(obj);
+
+      });
+
+      console.log("CSV Finished:", acc);
+
+      setTimeout(function() {
+        $('.loading').css('opacity', 0);
+      }, 500);
+
+      setTimeout(function() {
+        $('.loading').css('z-index', -1);
+      }, 700);
+
+    }
+});
+
 });

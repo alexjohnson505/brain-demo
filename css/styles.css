@@ -32,36 +32,80 @@ body {
   color: #fff;
   background-color: rgba(0,0,0,0);
   border: 2px solid #fff;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .menu button.btn:focus {
   outline: none;
-  
+ 
 }
 
 .menu button.btn:hover {
   background-color: rgba(255,255,255,.2);
 }
 
-// .image-picker {
-//   position: absolute;
-//   width: 100%;
-//   bottom: 0;
-//   border-top: 2px solid #999;
-//   height: 170px;
-//   padding-bottom: 15px;
-//   overflow: scroll;
-// }
+.loading {
+  background-color: rgba(0,0,0,.5);
+  color: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  opacity: 1;
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -ms-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
 
-// .image-picker .image-preview {
-//   width: 150px;
-//   height: 150px;
-//   float: left;
-//   border: 2px solid #999;
-//   margin: 15px 15px 0;
-// }
+.loading .glyphicon {  
+  display: block;
+  text-align: center;
+  margin-top: 25%;
+  font-size: 100px;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 4000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 4000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 4000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
 
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
 
 .modal .modal-content {
   background-color: #000;
@@ -84,4 +128,12 @@ body {
   border: 2px solid #999;
   margin: 0 0 15px;
 
+}
+
+.no-select {
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }

@@ -7,32 +7,34 @@
   <title>Brain Demo</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
-
   <link rel="stylesheet" href="css/styles.css">
   <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   <script src="http://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+  <script src="vendor/papaparse.min.js"></script>
   <script src="app.js"></script>
   <script>
-
   </script>
-
 </head>
 
-<body>
+<body> 
+  <div class="loading">
+    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+    <!-- <i class="icon-spinner icon-spin icon-large"></i> -->
+  </div>
   <div class="menu">
     <div class="checkbox">
       <form id="form">
-        <label>
+        <label class="no-select">
           <input type="checkbox" value="B" name="B">Blue
         </label>
-        <label>
+        <label class="no-select">
           <input type="checkbox" value="W" name="W">White
         </label>
-        <label>
+        <label class="no-select">
           <input type="checkbox" value="G" name="G">Green
         </label>
-        <label>
+        <label class="no-select">
           <input type="checkbox" value="R" name="R">Red
         </label>
       </form>
@@ -40,84 +42,99 @@
     </div>
   </div>
   <div id="map"></div>
-
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="modalLabel">Select a brain</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
-          </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalLabel">Select a brain</h4>
         </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
-        </div>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="preview"></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
           </div>
-          <div class="col-sm-8"><p>Description Here</p></div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="preview"></div>
+            </div>
+            <div class="col-sm-8">
+              <p>Description Here</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-  
 </body>
 
 </html>
