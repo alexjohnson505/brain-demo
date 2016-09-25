@@ -1,0 +1,17 @@
+set,B,W,G,R,filename
+05,true,true,true,false,05_BWGX.gif
+05,true,true,true,false,05_BWRX.gif
+05,true,true,false,false,05_BWXX.gif
+05,true,false,true,true,05_BXGR.gif
+05,true,false,true,false,05_BXGX.gif
+05,true,false,false,true,05_BXXR.gif
+05,true,false,false,false,05_BXXX.gif
+05,true,true,true,true,05_RGBW.gif
+05,false,true,true,true,05_XWGR.gif
+05,false,true,true,false,05_XWGX.gif
+05,false,true,false,false,05_XWXX.gif
+05,false,false,true,false,05_XXGX.gif
+05,false,false,true,true,05_XXRG.gif
+05,false,false,true,true,05_XXRW.gif
+05,false,false,false,true,05_XXXR.gif
+05,false,false,false,false,05_XXXX.gif
