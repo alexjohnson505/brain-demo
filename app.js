@@ -1,15 +1,16 @@
-'use strict';
-
 console.log("App Running");
 
 // Leaflet map reference
-var mymap;
+var map;
 
 // Reference to active layers
 var layers = [];
 
 // When form (checkboxes) are updated
 function update(form){
+
+  if (!form) return;
+
   var values = {};
 
   // Read values from form
@@ -19,10 +20,10 @@ function update(form){
 
   // Check which channels we have
   var i = {
-    B : values['B'] || "X",
-    W : values['W'] || "X",
-    G : values['G'] || "X",
-    R : values['R'] || "X",
+    B : values.B || "X",
+    W : values.W || "X",
+    G : values.G || "X",
+    R : values.R || "X",
   };
 
   // Build filename
@@ -35,19 +36,21 @@ function update(form){
 
 function addImage(filename){
 
+  if (!filename) return;
+
   // Remove previous layers
   $.each(layers, function(i, layer){
-    mymap.removeLayer(layer);
-  })
+    map.removeLayer(layer);
+  });
 
   // Clear layers
   layers = [];
 
   // Console feedback
-  console.log("Adding '" + filename + "'' to the document.");
+  console.log("Adding '" + filename + "' to the document.");
 
   var imageBounds = [[0, 0], [1, 1]];
-  var layer = L.imageOverlay(filename, imageBounds).addTo(mymap);
+  var layer = L.imageOverlay(filename, imageBounds).addTo(map);
 
   layers.push(layer);
 }
@@ -55,11 +58,16 @@ function addImage(filename){
 // Document ready
 $(function(){
 
-  // Set height of map
+  // Set Leaflet map to height of document
   $('#map').css('height', $(document).height());
 
+  var options = {
+    minZoom: 10,
+    maxZoom: 13,
+  };
+
   // Initialize new leaflet map
-  mymap = L.map('map').setView([0.5, 0.5], 9);
+  map = L.map('map', options).setView([0.5, 0.5], 10);
 
   // Watch for changes on form.
   $( "#form" ).change(function() {
@@ -67,4 +75,4 @@ $(function(){
   });
 
   addImage("images/05_XXXX.gif");
-})
+});
