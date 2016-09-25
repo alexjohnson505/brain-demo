@@ -60,6 +60,21 @@ function changeBrain(id){
   // pre-load
 }
 
+function loading(boolean){
+  if (boolean) {
+    $('.loading').css('opacity', 1);
+    $('.loading').css('z-index', 999);
+  } else {
+      setTimeout(function() {
+        $('.loading').css('opacity', 0);
+      }, 500);
+
+      setTimeout(function() {
+        $('.loading').css('z-index', -1);
+      }, 1000);
+  }
+}
+
 // Document ready
 $(function(){
 
@@ -121,14 +136,7 @@ $(function(){
 
       console.log("CSV Finished:", acc);
 
-      setTimeout(function() {
-        $('.loading').css('opacity', 0);
-      }, 500);
-
-      setTimeout(function() {
-        $('.loading').css('z-index', -1);
-      }, 700);
-
+      loading(false);
     }
 });
 
